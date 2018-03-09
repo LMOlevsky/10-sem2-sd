@@ -31,10 +31,11 @@ var circle = function(x, y){
 	    }
 	    else{
 		this.remove();
-		draw({offsetX: Math.random() * 500, offsetY: Math.random() * 500});
+		drawRand();
 	    }
 	}
     }
+    
     c.svgCircle.addEventListener("click", function(e){c.changeState(e)});
     return c;
 };
@@ -44,10 +45,16 @@ var clearCallback = function(e){
     svg.innerHTML = "";
 };
 
-var draw = function(e){
+var drawMouse = function(e){
     var newObj = circle(e.offsetX, e.offsetY);
     newObj.display();
 }
 
+
+var drawRand = function(e){
+    var newObj = circle(Math.random() * 500, Math.random() * 500);
+    newObj.display();
+}
+
 clear.addEventListener("click", clearCallback);
-svg.addEventListener("click", draw);
+svg.addEventListener("click", drawMouse);
